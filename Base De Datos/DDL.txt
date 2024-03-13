@@ -1,0 +1,21 @@
+create table categorias(
+    id_categoria serial PRIMARY KEY not null,
+    nombre varchar(50),
+    descripcion varchar(100)
+);
+
+create table noticias( 
+id_noticia serial primary key not null,
+titulo varchar(50), 
+imagen varchar(255) not null, 
+cuerpo varchar(255) not null, 
+fecha_pub Date not null, 
+descripcion varchar(75) not null, 
+estado char not null);
+
+create table noticias_categorias(
+    id_noticia_categoria serial primary key not null,
+    id_noticia int REFERENCES noticias(id_noticia),
+    id_categoria int REFERENCES categorias(id_categoria),
+    estado char
+);
